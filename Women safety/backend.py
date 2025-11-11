@@ -31,8 +31,9 @@ def trigger_sos(lat, lng):
     maps_link = f"https://maps.google.com/?q={lat},{lng}"
     message = f"🚨 SOS! I need help! My live location: {maps_link}"
 
-    phone_number = "+919259274909"  # your emergency contact
+    phone_number = "+91"  # your emergency contact
 
     send_whatsapp_message( message,phone_number, "Mom")
 
     return "✅ SOS alert sent successfully!"
+
