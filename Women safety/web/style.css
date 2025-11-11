@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff5f5;
+  height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+}
+.card {
+  background:#fff;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  width:360px;
+  text-align:center;
+}
+h1 { color:#d00000; margin:0 0 8px 0; }
+button {
+  background:#ff4d4d;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:12px;
+}
+input {
+  width:100%;
+  padding:8px 10px;
+  margin-top:8px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+#status { margin-top:14px; font-weight:600; }
+.actions button { background:#25D366; margin-top:8px; }

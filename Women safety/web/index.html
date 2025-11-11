@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Women Safety - SOS</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h1>🚨 Women Safety Alert System</h1>
+    <p>Press the SOS button to alert your trusted contact.</p>
+
+    <label for="name">Your name</label>
+    <input id="name" type="text" placeholder="e.g. Priyanshi" value="Priyanshi" />
+
+    <button id="sosBtn">HELP — SOS</button>
+
+    <p id="status"></p>
+
+    <div class="actions">
+      <button id="openWhatsApp">Send via WhatsApp</button>
+    </div>
+  </div>
+
+  <audio id="alarm" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></audio>
+
+  <script type="text/javascript" src="/eel.js"></script>
+  <script>
+    document.getElementById("sosBtn").addEventListener("click", () => {
+      if (confirm("Do you want to send SOS alert with your location?")) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Call Python backend via Eel
+            eel.send_sos(latitude, longitude)((response) => {
+              alert(response);
+            });
+
+          }, 
+          (err) => alert("Could not get location: " + err.message),
+          { enableHighAccuracy: true });
+        } else {
+          alert("Geolocation not supported by this browser.");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
